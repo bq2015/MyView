@@ -3,17 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/main_activity_tv"
-        android:gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/title" />
-
+<com.bq2015.myview.refreshlayout.BQRefreshLayout
+    android:id="@+id/main_rl_refreshview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_activity_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/main_rv_data"
+        style="@style/MatchAuto"
+        android:overScrollMode="never"
+        android:padding="5dp"
+        android:scrollbars="none" />
+
+</com.bq2015.myview.refreshlayout.BQRefreshLayout>
 
 </LinearLayout>

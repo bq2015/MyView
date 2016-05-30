@@ -1,12 +1,22 @@
 package com.bq2015.myview;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
-import com.bq2015.myview.adapter.RecyclerViewAdapter;
+import com.bq2015.myview.adapter.RecyclerViewAdapters;
+import com.bq2015.myview.adapter.core.OnItemChildCheckedChangeListener;
+import com.bq2015.myview.bean.ActivityInfo;
+import com.bq2015.myview.refreshlayout.BQMoocStyleRefreshViewHolder;
+import com.bq2015.myview.refreshlayout.BQRefreshLayout;
+import com.bq2015.myview.utils.ThreadUtil;
 
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -16,16 +26,20 @@ import butterknife.InjectView;
  * Created by Kylin on 2016/5/27.
  */
 public class MainActivity extends Activity {
-    @InjectView(R.id.main_activity_tv)
-    TextView mIvTitle;
-    @InjectView(R.id.main_activity_recyclerview)
-    RecyclerView mRecyclerview;
+
+    @InjectView(R.id.main_rv_data)
+    RecyclerView mRecyclerView;
 
     private final ActivityInfo[] activitys = getActivitys();
+    @InjectView(R.id.main_rl_refreshview)
+    BQRefreshLayout mBQRefreshLayout;
+    private RecyclerViewAdapters mAdapter;
+    private ActivityInfo[] mActivityInfos;
+    private List<ActivityInfo> mActivityInfos1;
 
     private ActivityInfo[] getActivitys() {
-        ActivityInfo[] activityInfos = {new ActivityInfo("","",AdvertiseViewActivity.class)};
-        return activityInfos;
+        mActivityInfos = new ActivityInfo[]{new ActivityInfo("", "", AdvertiseViewActivity.class)};
+        return mActivityInfos;
     }
 
     @Override
@@ -41,21 +55,59 @@ public class MainActivity extends Activity {
      * 初始化
      */
     private void init() {
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(activitys);
-        mRecyclerview.setAdapter(adapter);
+        mAdapter = new RecyclerViewAdapters(mRecyclerView);
+        mActivityInfos1 = Arrays.asList(mActivityInfos);
+        mAdapter.setDatas(mActivityInfos1);
+
+        /**
+         * 条目点击事件
+         */
+        mAdapter.setOnItemChildCheckedChangeListener(new OnItemChildCheckedChangeListener() {
+            @Override
+            public void onItemChildCheckedChanged(ViewGroup parent, CompoundButton childView,
+                                                  int position, boolean isChecked) {
+                //跳转
+                Intent intent = new Intent(MainActivity.this,
+                        mActivityInfos[position].activityClass);
+                startActivity(intent);
+
+            }
+        });
+
+        mode1();
+
+        mBQRefreshLayout.setDelegate(new BQRefreshLayout.RefreshLayoutDelegate() {
+            @Override
+            public void onRefreshLayoutBeginRefreshing(BQRefreshLayout refreshLayout) {
+                //模拟延迟效果
+                ThreadUtil.runInUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        mAdapter.setDatas(mActivityInfos1);
+                        mBQRefreshLayout.endRefreshing();
+                    }
+                }, 2000);
+            }
+
+            @Override
+            public boolean onRefreshLayoutBeginLoadingMore(BQRefreshLayout refreshLayout) {
+                return false;
+            }
+        });
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mAdapter);
     }
 
-    public static class ActivityInfo {
-       public String title;
-       public String detail;
-        public Class<? extends Activity> activityClass;
 
-        public ActivityInfo(String title, String detail,Class<? extends Activity> activityClass) {
-            this.title = title;
-            this.detail = detail;
-            this.activityClass = activityClass;
 
-        }
+    private void mode1() {
+        BQMoocStyleRefreshViewHolder moocStyleRefreshViewHolder = new BQMoocStyleRefreshViewHolder(this, true);
+        moocStyleRefreshViewHolder.setUltimateColor(R.color.custom_imoocstyle);
+        moocStyleRefreshViewHolder.setOriginalImage(R.mipmap.custom_mooc_icon);
+        moocStyleRefreshViewHolder.setSpringDistanceScale(0.2f);
+        mBQRefreshLayout.setRefreshViewHolder(moocStyleRefreshViewHolder);
     }
 
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~
+  ~   Copyright 2016 YunDi
+  ~
+  ~   The code is part of Yunnan, Shenzhen Branch of the internal architecture of YunDi source group
+  ~
+  ~   DO NOT DIVULGE
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.cloudd.yundilibrary.utils.refreshlayout.YDStickinessRefreshView
+        android:id="@+id/stickinessRefreshView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp" />
+
+</LinearLayout>
