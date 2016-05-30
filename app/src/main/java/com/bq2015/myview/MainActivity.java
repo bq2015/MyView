@@ -43,7 +43,8 @@ public class MainActivity extends Activity {
     private ActivityInfo[] getActivitys() {
         mActivityInfos = new ActivityInfo[]{
                 new ActivityInfo("广告轮播图", "自定义控件", AdvertiseViewActivity.class),
-        new ActivityInfo("自定滑动开关", "自定义控件", SwitchToggleViewActivity.class),
+                new ActivityInfo("自定滑动开关", "自定义控件", SwitchToggleViewActivity.class),
+                new ActivityInfo("自定义ImageView", "自定义控件", IamgeViewActivity.class),
                 new ActivityInfo("自定滑动开关", "自定义控件", CommonAdvertiseActivity.class)
         };
         return mActivityInfos;
@@ -106,7 +107,6 @@ public class MainActivity extends Activity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
     }
-
 
 
     private void mode1() {

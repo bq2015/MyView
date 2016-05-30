@@ -18,6 +18,7 @@
         <activity android:name=".AdvertiseViewActivity" />
         <activity android:name=".SwitchToggleViewActivity" />
         <activity android:name=".CommonAdvertiseActivity" />
+        <activity android:name=".IamgeViewActivity" />
 
     </application>
 
