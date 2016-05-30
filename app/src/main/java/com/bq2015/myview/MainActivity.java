@@ -5,16 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import com.bq2015.myview.adapter.RecyclerViewAdapters;
 import com.bq2015.myview.adapter.core.OnItemChildCheckedChangeListener;
+import com.bq2015.myview.adapter.core.OnItemChildClickListener;
 import com.bq2015.myview.bean.ActivityInfo;
 import com.bq2015.myview.refreshlayout.BQMoocStyleRefreshViewHolder;
 import com.bq2015.myview.refreshlayout.BQRefreshLayout;
 import com.bq2015.myview.utils.ThreadUtil;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,7 +41,11 @@ public class MainActivity extends Activity {
     private List<ActivityInfo> mActivityInfos1;
 
     private ActivityInfo[] getActivitys() {
-        mActivityInfos = new ActivityInfo[]{new ActivityInfo("", "", AdvertiseViewActivity.class)};
+        mActivityInfos = new ActivityInfo[]{
+                new ActivityInfo("广告轮播图", "自定义控件", AdvertiseViewActivity.class),
+        new ActivityInfo("自定滑动开关", "自定义控件", SwitchToggleViewActivity.class),
+                new ActivityInfo("自定滑动开关", "自定义控件", CommonAdvertiseActivity.class)
+        };
         return mActivityInfos;
     }
 
@@ -55,6 +62,7 @@ public class MainActivity extends Activity {
      * 初始化
      */
     private void init() {
+
         mAdapter = new RecyclerViewAdapters(mRecyclerView);
         mActivityInfos1 = Arrays.asList(mActivityInfos);
         mAdapter.setDatas(mActivityInfos1);
@@ -62,15 +70,14 @@ public class MainActivity extends Activity {
         /**
          * 条目点击事件
          */
-        mAdapter.setOnItemChildCheckedChangeListener(new OnItemChildCheckedChangeListener() {
+        mAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
             @Override
-            public void onItemChildCheckedChanged(ViewGroup parent, CompoundButton childView,
-                                                  int position, boolean isChecked) {
-                //跳转
+            public void onItemChildClick(ViewGroup parent, View childView, int position) {
                 Intent intent = new Intent(MainActivity.this,
-                        mActivityInfos[position].activityClass);
-                startActivity(intent);
+                        mActivityInfos1.get(position).activityClass
+                );
 
+                startActivity(intent);
             }
         });
 

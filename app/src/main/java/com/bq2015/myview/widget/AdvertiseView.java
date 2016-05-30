@@ -1,19 +1,26 @@
-package com.bq2015.myview;
+package com.bq2015.myview.widget;
 
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.bq2015.myview.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommonAdvertise extends AppCompatActivity {
+/**
+ * Created by Kylin on 2016/5/24.
+ */
+public class AdvertiseView extends RelativeLayout {
 
     private int[] images = {R.mipmap.icon1, R.mipmap.icon2, R.mipmap.icon3,
             R.mipmap.icon4, R.mipmap.icon5, R.mipmap.icon6, R.mipmap.icon7,
@@ -21,19 +28,30 @@ public class CommonAdvertise extends AppCompatActivity {
 
     private String[] titles = {"风吹轻轻", "春风得意", "那时风雨"
             , "青春不散", "还是一个人", "中秋佳节", "愉人自乐"};
+
     private LinearLayout mContainer;
     private TextView mTitle;
     private ViewPager mViewPager;
     private List<ImageView> mIamgeViews;
     private int mLastSelectPage = 0;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_common_advertise);
+    public AdvertiseView(Context context) {
+        this(context, null);
+    }
+
+    public AdvertiseView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+
+    }
+
+    private void init() {
+        // 把布局合并到自定义控件AdvertiseView里
+        LayoutInflater.from(getContext()).inflate(R.layout.activity_common_advertise, this);
         initView();
         initData();
     }
+
 
     private void initView() {
         //查找控件
@@ -47,10 +65,10 @@ public class CommonAdvertise extends AppCompatActivity {
         mViewPager.setAdapter(new ImagesAdapter());
         mIamgeViews = new ArrayList<>();
         for (int i = 0; i < images.length; i++) {
-            mIamgeViews.add(new ImageView(this));
+            mIamgeViews.add(new ImageView(getContext()));
 
             //动态添加点
-            View dot = new View(this);
+            View dot = new View(getContext());
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(10, 10);
             //最后一个点不需要margin
             if (i != images.length - 1) {
@@ -68,7 +86,6 @@ public class CommonAdvertise extends AppCompatActivity {
         }
 
 
-
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -84,7 +101,7 @@ public class CommonAdvertise extends AppCompatActivity {
                 View preDot = mContainer.getChildAt(mLastSelectPage);
                 preDot.setBackgroundResource(R.drawable.dost_shape_normal);
 
-                View currentDot =  mContainer.getChildAt(position);
+                View currentDot = mContainer.getChildAt(position);
                 currentDot.setBackgroundResource(R.drawable.dost_shape_selected);
 
                 mLastSelectPage = position;
@@ -135,4 +152,6 @@ public class CommonAdvertise extends AppCompatActivity {
             container.removeView(page);
         }
     }
+
+
 }

@@ -1,4 +1,4 @@
-package com.bq2015.switchtoggleview;
+package com.bq2015.myview.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,6 +8,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.bq2015.myview.R;
 
 /**
  * Created by Kylin on 2016/5/25.
@@ -39,7 +41,7 @@ public class SwitchToggleView extends View {
                 R.drawable.switch_background);
         //滑块bitmap
         mSlideBitmap = BitmapFactory.decodeResource(getResources(),
-                R.drawable.slide_button_background);
+               R.drawable.slide_button_background);
 
         //滑块能够滑到最右边的距离
         mMaxLeft = mBackgroundBitmap.getWidth() - mSlideBitmap.getWidth();

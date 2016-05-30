@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.bq2015.switchtoggleview.SwitchToggleView;
+import com.bq2015.myview.widget.SwitchToggleView;
 
 /**
  * Created by Kylin on 2016/5/25.
