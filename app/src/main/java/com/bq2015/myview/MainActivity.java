@@ -7,17 +7,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 
 import com.bq2015.myview.adapter.RecyclerViewAdapters;
-import com.bq2015.myview.adapter.core.OnItemChildCheckedChangeListener;
 import com.bq2015.myview.adapter.core.OnItemChildClickListener;
 import com.bq2015.myview.bean.ActivityInfo;
 import com.bq2015.myview.refreshlayout.BQMoocStyleRefreshViewHolder;
 import com.bq2015.myview.refreshlayout.BQRefreshLayout;
 import com.bq2015.myview.utils.ThreadUtil;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,19 +30,16 @@ public class MainActivity extends Activity {
     @InjectView(R.id.main_rv_data)
     RecyclerView mRecyclerView;
 
-    private final ActivityInfo[] activitys = getActivitys();
+    private final ActivityInfo[] mActivityInfos = getActivitys();
     @InjectView(R.id.main_rl_refreshview)
     BQRefreshLayout mBQRefreshLayout;
     private RecyclerViewAdapters mAdapter;
-    private ActivityInfo[] mActivityInfos;
-    private List<ActivityInfo> mActivityInfos1;
+    private List<ActivityInfo> mInfos;
 
     private ActivityInfo[] getActivitys() {
-        mActivityInfos = new ActivityInfo[]{
-                new ActivityInfo("广告轮播图", "自定义控件", AdvertiseViewActivity.class),
-                new ActivityInfo("自定滑动开关", "自定义控件", SwitchToggleViewActivity.class),
-                new ActivityInfo("自定义ImageView", "自定义控件", IamgeViewActivity.class),
-                new ActivityInfo("自定滑动开关", "自定义控件", CommonAdvertiseActivity.class)
+        ActivityInfo[] mActivityInfos = new ActivityInfo[]{
+
+                new ActivityInfo("Widget", "一些自定义的控件", WidgetActivity.class)
         };
         return mActivityInfos;
     }
@@ -65,8 +59,8 @@ public class MainActivity extends Activity {
     private void init() {
 
         mAdapter = new RecyclerViewAdapters(mRecyclerView);
-        mActivityInfos1 = Arrays.asList(mActivityInfos);
-        mAdapter.setDatas(mActivityInfos1);
+        mInfos = Arrays.asList(mActivityInfos);
+        mAdapter.setDatas(mInfos);
 
         /**
          * 条目点击事件
@@ -75,7 +69,7 @@ public class MainActivity extends Activity {
             @Override
             public void onItemChildClick(ViewGroup parent, View childView, int position) {
                 Intent intent = new Intent(MainActivity.this,
-                        mActivityInfos1.get(position).activityClass
+                        mInfos.get(position).activityClass
                 );
 
                 startActivity(intent);
@@ -92,7 +86,7 @@ public class MainActivity extends Activity {
                     @Override
                     public void run() {
 
-                        mAdapter.setDatas(mActivityInfos1);
+                        mAdapter.setDatas(mInfos);
                         mBQRefreshLayout.endRefreshing();
                     }
                 }, 2000);
