@@ -16,8 +16,9 @@ import com.bq2015.myview.refreshlayout.BQRefreshLayout;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+
 
 /************************************************************
  * Author:  fangqq
@@ -25,24 +26,28 @@ import butterknife.InjectView;
  * Date:2016/5/31
  ************************************************************/
 public class WidgetActivity extends Activity {
-    @InjectView(R.id.widget_activity_rv)
     RecyclerView mRecyclerView;
-    @InjectView(R.id.widget_activity_rl)
-    BQRefreshLayout mRefreshLayout;
-    private RecyclerViewAdapters mAdapters;
+    @BindView(R.id.rv_widget)
+    RecyclerView mRvWidget;
+    @BindView(R.id.rl_widget)
+    BQRefreshLayout mRlWidget;
+
+    private RecyclerViewAdapters mWidgetAdapters;
     private List<ActivityInfo> mActivityInfos = getActivityIofos();
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_widget_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         initData();
         initListener();
     }
 
     /**
      * 构建数据集合
+     *
      * @return
      */
     public List<ActivityInfo> getActivityIofos() {
@@ -58,17 +63,17 @@ public class WidgetActivity extends Activity {
      * 初始化数据
      */
     private void initData() {
-        mAdapters = new RecyclerViewAdapters(mRecyclerView);
-        mAdapters.setDatas(mActivityInfos);
-        mRecyclerView.setAdapter(mAdapters);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mWidgetAdapters = new RecyclerViewAdapters(mRvWidget);
+        mWidgetAdapters.setDatas(mActivityInfos);
+        mRvWidget.setLayoutManager(new LinearLayoutManager(this));
+        mRvWidget.setAdapter(mWidgetAdapters);
     }
 
     /**
      * 注册事件集
      */
     private void initListener() {
-        mAdapters.setOnItemChildClickListener(new OnItemChildClickListener() {
+        mWidgetAdapters.setOnItemChildClickListener(new OnItemChildClickListener() {
             @Override
             public void onItemChildClick(ViewGroup parent, View childView, int position) {
                 Intent intent = new Intent(WidgetActivity.this, mActivityInfos.get(position).activityClass);

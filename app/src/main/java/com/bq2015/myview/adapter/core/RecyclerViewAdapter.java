@@ -21,9 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * RecyclerView adapter
- *
+ * <p/>
  * <p>item click(longClick)，extend this class，external invoke setOnRVItemClickListener();<br>
  * subItem click(longCLick)，extend this class，override setItemChildListener,external invoke setOnItemChildClickListener();</p>
  *
@@ -172,6 +171,7 @@ public abstract class RecyclerViewAdapter<M> extends RecyclerView.Adapter<Recycl
 
     /**
      * set new datas,set null,clear all(first get datas for server or pull to refresh)
+     *
      * @param datas
      */
     public void setDatas(List<M> datas) {
@@ -185,6 +185,7 @@ public abstract class RecyclerViewAdapter<M> extends RecyclerView.Adapter<Recycl
 
     /**
      * insert data to datas header(example weibo refresh same newly data)
+     *
      * @param datas
      */
     public void addNewDatas(List<M> datas) {
@@ -196,6 +197,7 @@ public abstract class RecyclerViewAdapter<M> extends RecyclerView.Adapter<Recycl
 
     /**
      * insert data to datas footer(example weibo loadmore same newly data)
+     *
      * @param datas
      */
     public void addMoreDatas(List<M> datas) {

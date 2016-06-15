@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 <com.bq2015.myview.refreshlayout.BQRefreshLayout
-    android:id="@+id/main_rl_refreshview"
+    android:id="@+id/rl_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_rv_data"
+        android:id="@+id/rv_main"
         style="@style/MatchAuto"
         android:overScrollMode="never"
         android:padding="5dp"
