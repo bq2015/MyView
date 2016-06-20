@@ -14,6 +14,7 @@ import com.bq2015.myview.bean.ActivityInfo;
 import com.bq2015.myview.refreshlayout.BQMoocStyleRefreshViewHolder;
 import com.bq2015.myview.refreshlayout.BQRefreshLayout;
 import com.bq2015.myview.utils.ThreadUtil;
+import com.bq2015.myview.widget.TestActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -41,7 +42,8 @@ public class MainActivity extends BaseActivity {
     private ActivityInfo[] getActivitys() {
         ActivityInfo[] mActivityInfos = new ActivityInfo[]{
                 new ActivityInfo("Widget", "一些自定义的控件", WidgetActivity.class),
-                new ActivityInfo("Animation", "android动画", AnimActivity.class)
+                new ActivityInfo("Animation", "android动画", AnimActivity.class),
+                new ActivityInfo("Test", "快速测试", TestActivity.class)
         };
         return mActivityInfos;
     }

@@ -33,6 +33,8 @@
         <activity android:name=".activity.ObjectAnimaActivity"/>
         <!--XmL方式动画-->
         <activity android:name=".activity.XMLAnimaActivity"/>
+        <!--Test-->
+        <activity android:name=".widget.TestActivity"/>
 
 
     </application>

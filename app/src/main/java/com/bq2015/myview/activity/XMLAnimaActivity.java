@@ -28,6 +28,7 @@ public class XMLAnimaActivity extends BaseActivity {
     }
 
     private void playByXML() {
+        mTvValueanima.setText(R.string.valueanimation);
         Animator animator = AnimatorInflater.loadAnimator(this, R.animator.anim_file);
         animator.setTarget(mTvValueanima);
         animator.start();
