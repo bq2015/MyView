@@ -3,4 +3,9 @@
     <declare-styleable name="SimpleImageView">
         <attr name="src" format="integer" />
     </declare-styleable>
+    <declare-styleable name="BubbleImageView">
+        <attr name="r" format="dimension"/>
+        <attr name="text_size" format="dimension"/>
+        <attr name="text" format="string"/>
+    </declare-styleable>
 </resources>

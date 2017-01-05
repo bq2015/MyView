@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~
-  ~   Copyright 2016 YunDi
-  ~
-  ~   The code is part of Yunnan, Shenzhen Branch of the internal architecture of YunDi source group
-  ~
-  ~   DO NOT DIVULGE
-  ~
-  -->
+
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -15,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.cloudd.yundilibrary.utils.refreshlayout.YDMeiTuanRefreshView
+    <com.bq2015.myview.refreshlayout.BQMeiTuanRefreshView
         android:id="@+id/meiTuanView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,6 +26,6 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:visibility="invisible" />
-    </com.cloudd.yundilibrary.utils.refreshlayout.YDMeiTuanRefreshView>
+    </com.bq2015.myview.refreshlayout.BQMeiTuanRefreshView>
 
 </LinearLayout>

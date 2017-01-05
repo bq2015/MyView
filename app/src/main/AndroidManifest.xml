@@ -20,6 +20,7 @@
         <activity android:name=".SwitchToggleViewActivity" />
         <activity android:name=".CommonAdvertiseActivity" />
         <activity android:name=".IamgeViewActivity" />
+        <activity android:name=".BubbleIamgeViewActivity"/>
 
     </application>
 
