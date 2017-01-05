@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bq2015.myview">
+<manifest package="com.bq2015.myview"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -10,17 +10,33 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".WidgetActivity" />
-        <activity android:name=".AdvertiseViewActivity" />
-        <activity android:name=".SwitchToggleViewActivity" />
-        <activity android:name=".CommonAdvertiseActivity" />
-        <activity android:name=".IamgeViewActivity" />
-        <activity android:name=".BubbleIamgeViewActivity"/>
+        <!--自定义控件-->
+        <activity android:name=".WidgetActivity"/>
+        <!--动画-->
+        <activity android:name=".activity.AnimActivity"/>
+        <!--广告轮播-->
+        <activity android:name=".AdvertiseViewActivity"/>
+        <!--滑动开关-->
+        <activity android:name=".SwitchToggleViewActivity"/>
+        <!--通用轮播-->
+        <activity android:name=".CommonAdvertiseActivity"/>
+        <!--自定义ImageView-->
+        <activity android:name=".IamgeViewActivity"/>
+        <!--Value属性动画-->
+        <activity android:name=".activity.ValueAnimaActivity"/>
+        <!--Object属性动画-->
+        <activity android:name=".activity.ObjectAnimaActivity"/>
+        <!--XmL方式动画-->
+        <activity android:name=".activity.XMLAnimaActivity"/>
+        <!--Test-->
+        <activity android:name=".widget.TestActivity"/>
+
+>>>>>>> a3f047abd064012c4e440c81a734d88fbe7a6853
 
     </application>
 
