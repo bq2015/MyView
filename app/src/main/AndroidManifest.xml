@@ -35,8 +35,9 @@
         <activity android:name=".activity.XMLAnimaActivity"/>
         <!--Test-->
         <activity android:name=".widget.TestActivity"/>
+        <!--TabLayout Demo-->
+        <activity android:name=".activity.TableLayoutActivity"/>
 
->>>>>>> a3f047abd064012c4e440c81a734d88fbe7a6853
 
     </application>
 

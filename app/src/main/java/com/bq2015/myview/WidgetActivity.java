@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bq2015.myview.activity.TableLayoutActivity;
 import com.bq2015.myview.adapter.RecyclerViewAdapters;
 import com.bq2015.myview.adapter.core.OnRVItemClickListener;
 import com.bq2015.myview.bean.ActivityInfo;
@@ -54,8 +55,9 @@ public class WidgetActivity extends Activity {
         ActivityInfo[] activityInfos = new ActivityInfo[]{
                 new ActivityInfo("广告轮播图", "自定义控件", AdvertiseViewActivity.class),
                 new ActivityInfo("自定滑动开关", "自定义控件", SwitchToggleViewActivity.class),
-                new ActivityInfo("自定义ImageView", "自定义控件", IamgeViewActivity.class),
-                new ActivityInfo("自定义ImageView", "小气泡", BubbleIamgeViewActivity.class)
+                new ActivityInfo("自定义ImageView", "ImageView", IamgeViewActivity.class),
+                new ActivityInfo("自定义小气泡控件", "小气泡", BubbleIamgeViewActivity.class),
+                new ActivityInfo("TabLayout", "TabLayout的使用", TableLayoutActivity.class)
 
         };
         return Arrays.asList(activityInfos);
